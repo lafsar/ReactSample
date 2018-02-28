@@ -12,9 +12,17 @@ class Navbar extends React.Component<Props, State> {
     static defaultProps: Props = {
         navItems: []
     };
-    setActive(index: number, e: React.SyntheticEvent<EventTarget>) {
+    handleClick(index: number, e: React.SyntheticEvent<EventTarget>) {
         // let target = e.target as HTMLLIElement;
         this.setState({ activeIndex: index });
+    }
+
+    handlePress(index: number, e: React.KeyboardEvent<EventTarget>) {
+        // let target = e.target as HTMLLIElement;
+        let charCode = e.charCode;
+        if (charCode === 13) {
+            this.setState({ activeIndex: index });
+        }
     }
 
     getActiveClass(index: number): string {
@@ -31,9 +39,11 @@ class Navbar extends React.Component<Props, State> {
                 (label: string, index: number) => 
                     (
                         <li
+                            tabIndex={0}
                             className={'some-default-class ' + this.getActiveClass(index)}
                             key={label} 
-                            onClick={this.setActive.bind(this, index)}
+                            onClick={this.handleClick.bind(this, index)}
+                            onKeyPress={this.handlePress.bind(this, index)}
                         >{label}
                         </li>
                     )
