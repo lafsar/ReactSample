@@ -1,0 +1,24 @@
+.navbar {
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background: #F0ECEB;
+        width: 100%;
+        li {
+            padding: 5px;
+            flex: 1;
+            &:hover {
+                background: white;
+
+            }
+            &.active {
+                background: white;
+                border-left: 1px solid #333;
+                border-right: 1px solid #333;
+            }
+        }
+    }
+}
